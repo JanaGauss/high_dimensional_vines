@@ -1,0 +1,17 @@
+
+remotes::install_github("vinecopulib/rvinecopulib@rotgumbel")
+remotes::install_github("tnagler/VineCopula@gumbel-sq")
+
+library(ggplot2)
+library(latex2exp)
+library(ggridges)
+library(stringr)
+library(grid)
+library(gridExtra)
+library(cowplot)
+library(tidyverse)
+library(CVXR)
+library(TDA)
+library(nloptr)
+library(VineCopula)
+library(rvinecopulib)

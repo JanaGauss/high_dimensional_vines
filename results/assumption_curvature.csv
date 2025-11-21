@@ -1,0 +1,97 @@
+d,p,K,n,par,dvine,error_const,seed,name,alpha_t,value
+10,45,50,4605,function (t)  0,FALSE,0.005,3975,constant_0_cvine_10,function (t)  1,-0.8170776510104996
+15,105,50,5416,function (t)  0,FALSE,0.005,52965,constant_0_cvine_15,function (t)  1,-0.8308050692553433
+20,190,50,5991,function (t)  0,FALSE,0.005,99212,constant_0_cvine_20,function (t)  1,-0.7435645068007861
+30,435,50,6802,function (t)  0,FALSE,0.005,91608,constant_0_cvine_30,function (t)  1,-0.7111424500980981
+40,780,50,7378,function (t)  0,FALSE,0.005,40453,constant_0_cvine_40,function (t)  1,-0.6779872249751432
+5,10,50,3219,function (t)  0,FALSE,0.005,19991,constant_0_cvine_5,function (t)  1,-0.9351710917373943
+50,1225,50,7824,function (t)  0,FALSE,0.005,40516,constant_0_cvine_50,function (t)  1,-0.6210874640406129
+8,28,50,4159,function (t)  0,FALSE,0.005,32922,constant_0_cvine_8,function (t)  1,-0.8815546967783426
+10,45,50,4605,function (t)  0,TRUE,0.005,64864,constant_0_dvine_10,function (t)  1,-0.8528871253766304
+15,105,50,5416,function (t)  0,TRUE,0.005,75522,constant_0_dvine_15,function (t)  1,-0.7809479922695098
+20,190,50,5991,function (t)  0,TRUE,0.005,65611,constant_0_dvine_20,function (t)  1,-0.7777178469707493
+30,435,50,6802,function (t)  0,TRUE,0.005,95847,constant_0_dvine_30,function (t)  1,-0.64131366588582
+40,780,50,7378,function (t)  0,TRUE,0.005,91914,constant_0_dvine_40,function (t)  1,-0.6514881580988868
+5,10,50,3219,function (t)  0,TRUE,0.005,76440,constant_0_dvine_5,function (t)  1,-0.8980435848096413
+50,1225,50,7824,function (t)  0,TRUE,0.005,62368,constant_0_dvine_50,function (t)  1,-0.59614303418788706
+8,28,50,4159,function (t)  0,TRUE,0.005,98909,constant_0_dvine_8,function (t)  1,-0.8190803903739919
+10,45,50,4605,function (t)  0.5^t,FALSE,0.005,28313,exponential_cvine_10,function (t)  1,-0.7508294552726922
+15,105,50,5416,function (t)  0.5^t,FALSE,0.005,97800,exponential_cvine_15,function (t)  1,-0.73376390883534
+20,190,50,5991,function (t)  0.5^t,FALSE,0.005,76946,exponential_cvine_20,function (t)  1,-0.7167606829634375
+30,435,50,6802,function (t)  0.5^t,FALSE,0.005,91477,exponential_cvine_30,function (t)  1,-0.7063668319574112
+40,780,50,7378,function (t)  0.5^t,FALSE,0.005,12335,exponential_cvine_40,function (t)  1,-0.5946101015647776
+5,10,50,3219,function (t)  0.5^t,FALSE,0.005,88607,exponential_cvine_5,function (t)  1,-0.6956424762850744
+50,1225,50,7824,function (t)  0.5^t,FALSE,0.005,20216,exponential_cvine_50,function (t)  1,-0.600014383318174
+8,28,50,4159,function (t)  0.5^t,FALSE,0.005,51432,exponential_cvine_8,function (t)  1,-0.797606179645554
+10,45,50,4605,function (t)  0.5^t,TRUE,0.005,98667,exponential_dvine_10,function (t)  1,-0.702567607583747
+15,105,50,5416,function (t)  0.5^t,TRUE,0.005,22008,exponential_dvine_15,function (t)  1,-0.7231817513643191
+20,190,50,5991,function (t)  0.5^t,TRUE,0.005,40564,exponential_dvine_20,function (t)  1,-0.7113843960402617
+30,435,50,6802,function (t)  0.5^t,TRUE,0.005,9837,exponential_dvine_30,function (t)  1,-0.6826003242780952
+40,780,50,7378,function (t)  0.5^t,TRUE,0.005,99251,exponential_dvine_40,function (t)  1,-0.5912316025876999
+5,10,50,3219,function (t)  0.5^t,TRUE,0.005,9795,exponential_dvine_5,function (t)  1,-0.7411938714625618
+50,1225,50,7824,function (t)  0.5^t,TRUE,0.005,1258,exponential_dvine_50,function (t)  1,-0.615434200974551
+8,28,50,4159,function (t)  0.5^t,TRUE,0.005,62026,exponential_dvine_8,function (t)  1,-0.7463033904338067
+10,45,50,4605,function (t)  1/(t + 1),FALSE,0.005,12127,harmonic_cvine_10,function (t)  1,-0.4540341728824296
+15,105,50,5416,function (t)  1/(t + 1),FALSE,0.005,52938,harmonic_cvine_15,function (t)  1,-0.48157626644622153
+20,190,50,5991,function (t)  1/(t + 1),FALSE,0.005,62854,harmonic_cvine_20,function (t)  1,-0.5138201777025432
+30,435,50,6802,function (t)  1/(t + 1),FALSE,0.005,98071,harmonic_cvine_30,function (t)  1,-0.5289013392074067
+40,780,50,7378,function (t)  1/(t + 1),FALSE,0.005,24388,harmonic_cvine_40,function (t)  1,-0.5013437008136297
+5,10,50,3219,function (t)  1/(t + 1),FALSE,0.005,77769,harmonic_cvine_5,function (t)  1,-0.6079780827123169
+50,1225,50,7824,function (t)  1/(t + 1),FALSE,0.005,36638,harmonic_cvine_50,function (t)  1,-0.4793580909302285
+8,28,50,4159,function (t)  1/(t + 1),FALSE,0.005,44035,harmonic_cvine_8,function (t)  1,-0.5527806673941136
+10,45,50,4605,function (t)  1/(t + 1),TRUE,0.005,79497,harmonic_dvine_10,function (t)  1,-0.46117490834903274
+15,105,50,5416,function (t)  1/(t + 1),TRUE,0.005,32719,harmonic_dvine_15,function (t)  1,-0.5012559393078972
+20,190,50,5991,function (t)  1/(t + 1),TRUE,0.005,5265,harmonic_dvine_20,function (t)  1,-0.46897729800214827
+30,435,50,6802,function (t)  1/(t + 1),TRUE,0.005,15505,harmonic_dvine_30,function (t)  1,-0.3751827731163372
+40,780,50,7378,function (t)  1/(t + 1),TRUE,0.005,16954,harmonic_dvine_40,function (t)  1,-0.4690777490384459
+5,10,50,3219,function (t)  1/(t + 1),TRUE,0.005,2848,harmonic_dvine_5,function (t)  1,-0.5573877407733824
+50,1225,50,7824,function (t)  1/(t + 1),TRUE,0.005,14349,harmonic_dvine_50,function (t)  1,-0.42864715219989236
+8,28,50,4159,function (t)  1/(t + 1),TRUE,0.005,40996,harmonic_dvine_8,function (t)  1,-0.5167676952408953
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),FALSE,0.005,79631,harmonicRoot05_cvine_10,function (t)  1,-0.5100573130838261
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),FALSE,0.005,25130,harmonicRoot05_cvine_15,function (t)  1,-0.462532109369582
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),FALSE,0.005,90423,harmonicRoot05_cvine_20,function (t)  1,-0.4274779441272275
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),FALSE,0.005,21024,harmonicRoot05_cvine_30,function (t)  1,-0.39698448531835656
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),FALSE,0.005,33746,harmonicRoot05_cvine_40,function (t)  1,-0.4364206523814418
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),FALSE,0.005,59147,harmonicRoot05_cvine_5,function (t)  1,-0.5786505673394532
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),FALSE,0.005,52444,harmonicRoot05_cvine_50,function (t)  1,-0.45227281946675185
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),FALSE,0.005,56643,harmonicRoot05_cvine_8,function (t)  1,-0.535394073187117
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),TRUE,0.005,97292,harmonicRoot05_dvine_10_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },-0.7428870504012377
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,97292,harmonicRoot05_dvine_10_3,function (t)  t,-0.8282942832640167
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,97292,harmonicRoot05_dvine_10_4,function (t)  t^2,-0.9058670916007994
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,97292,harmonicRoot05_dvine_10_5,function (t)  t^3,-0.9404263925593207
+10,45,50,4605,function (t)  0.5/sqrt(t + 1),TRUE,0.005,97292,harmonicRoot05_dvine_10,function (t)  1,-0.5845094732538448
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),TRUE,0.005,393,harmonicRoot05_dvine_15_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },-0.6070529363766896
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,393,harmonicRoot05_dvine_15_3,function (t)  t,-0.7951221289387147
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,393,harmonicRoot05_dvine_15_4,function (t)  t^2,-0.8820212220645838
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,393,harmonicRoot05_dvine_15_5,function (t)  t^3,-0.9154383114344162
+15,105,50,5416,function (t)  0.5/sqrt(t + 1),TRUE,0.005,393,harmonicRoot05_dvine_15,function (t)  1,-0.45263843674359633
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),TRUE,0.005,89236,harmonicRoot05_dvine_20_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },-0.3249048061301255
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,89236,harmonicRoot05_dvine_20_3,function (t)  t,-0.8048894668925832
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,89236,harmonicRoot05_dvine_20_4,function (t)  t^2,-0.891271528277146
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,89236,harmonicRoot05_dvine_20_5,function (t)  t^3,-0.925666584185492
+20,190,50,5991,function (t)  0.5/sqrt(t + 1),TRUE,0.005,89236,harmonicRoot05_dvine_20,function (t)  1,-0.2580622106874285
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),TRUE,0.005,74320,harmonicRoot05_dvine_30_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },0.5243474950377701
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,74320,harmonicRoot05_dvine_30_3,function (t)  t,-0.6895674038887024
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,74320,harmonicRoot05_dvine_30_4,function (t)  t^2,-0.8149104961229642
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,74320,harmonicRoot05_dvine_30_5,function (t)  t^3,-0.8537625798515913
+30,435,50,6802,function (t)  0.5/sqrt(t + 1),TRUE,0.005,74320,harmonicRoot05_dvine_30,function (t)  1,0.8690218540577548
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),TRUE,0.005,93664,harmonicRoot05_dvine_40_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },4.344979519995954
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,93664,harmonicRoot05_dvine_40_3,function (t)  t,-0.6650009487741851
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,93664,harmonicRoot05_dvine_40_4,function (t)  t^2,-0.7409071060129607
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,93664,harmonicRoot05_dvine_40_5,function (t)  t^3,-0.797835219614866
+40,780,50,7378,function (t)  0.5/sqrt(t + 1),TRUE,0.005,93664,harmonicRoot05_dvine_40,function (t)  1,5.906749231543315
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),TRUE,0.005,86951,harmonicRoot05_dvine_5_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },-0.9050411942493771
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,86951,harmonicRoot05_dvine_5_3,function (t)  t,-0.9546723583452738
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,86951,harmonicRoot05_dvine_5_4,function (t)  t^2,-1.0072251088732995
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,86951,harmonicRoot05_dvine_5_5,function (t)  t^3,-1.0332287412803676
+5,10,50,3219,function (t)  0.5/sqrt(t + 1),TRUE,0.005,86951,harmonicRoot05_dvine_5,function (t)  1,-0.7931250012417707
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),TRUE,0.005,21052,harmonicRoot05_dvine_50_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },16.22355778706712
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,21052,harmonicRoot05_dvine_50_3,function (t)  t,-0.614494430120006
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,21052,harmonicRoot05_dvine_50_4,function (t)  t^2,-0.7833263988891287
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,21052,harmonicRoot05_dvine_50_5,function (t)  t^3,-0.8323843300553682
+50,1225,50,7824,function (t)  0.5/sqrt(t + 1),TRUE,0.005,21052,harmonicRoot05_dvine_50,function (t)  1,23.60508947520458
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),TRUE,0.005,25548,harmonicRoot05_dvine_8_2,function (t)  {     res <- 0     for (i in 1:t) {         res <- res + i^(-1.1)     }     res },-0.7938057500241668
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),TRUE,1e-7,25548,harmonicRoot05_dvine_8_3,function (t)  t,-0.8959152659367142
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),TRUE,1e-9,25548,harmonicRoot05_dvine_8_4,function (t)  t^2,-0.9900792130590474
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),TRUE,1e-10,25548,harmonicRoot05_dvine_8_5,function (t)  t^3,-1.0183597030310696
+8,28,50,4159,function (t)  0.5/sqrt(t + 1),TRUE,0.005,25548,harmonicRoot05_dvine_8,function (t)  1,-0.6138636017395941
