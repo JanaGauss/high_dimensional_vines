@@ -1,6 +1,6 @@
 # Properties of stepwise parameter estimation in high-dimensional vine copulas
 
-Code and data to reproduce the results of the paper *Gauss and Nagler. Properties of stepwise parameter estimation in high-dimensional vine copulas*.
+Code and data to reproduce the results of the paper [*Gauss and Nagler. Properties of stepwise parameter estimation in high-dimensional vine copulas*](https://arxiv.org/abs/2511.17291).
 
 ## Code and data:
 
