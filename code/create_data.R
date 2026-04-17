@@ -14,12 +14,12 @@ for(f in files){
   res_f <- readRDS(paste0(path, "/", f))
   df <- res_f$df
   
-  df$value <- max(res_f$res)
-  
   res <- rbind(res, df)
   
 }
 
+# sanity check:
+max(res$E_phi_true) # should be (close to) 0
 write_csv(res, "results/assumption_curvature.csv")
 
 #### assumption M_n ####

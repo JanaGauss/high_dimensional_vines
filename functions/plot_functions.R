@@ -21,17 +21,17 @@ plot_sum_error <- function(res_df, title, outlier.size = 0.5,
   
   plot1 <- ggplot(data = res_df %>% filter(dvine)) + geom_boxplot(aes(x = as.factor(d), y = sum_error*sqrt(n)/d, fill = as.factor(n)), outlier.size = outlier.size) + 
     facet_wrap(~par, ncol = 3, scales = "free_y", labeller = label_parsed) + theme_bw() + 
-    labs(title = "D-Vine", fill = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum \\hat{\\theta}_k - \\theta_k^*$")) +
+    labs(title = "D-Vine", fill = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum (\\hat{\\theta}_k - \\theta_k^*)$")) +
     geom_hline(yintercept = 0, color = "grey30") +
     scale_fill_brewer(palette = "Set1")
   plot2 <- ggplot(data = res_df %>% filter(!dvine)) + geom_boxplot(aes(x = as.factor(d), y = sum_error*sqrt(n)/d, fill = as.factor(n)), outlier.size = outlier.size) + 
     facet_wrap(~par, ncol = 3, scales = "free_y", labeller = label_parsed) + theme_bw() + 
-    labs(title = "C-Vine", fill = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum \\hat{\\theta}_k - \\theta_k^*$")) +
+    labs(title = "C-Vine", fill = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum (\\hat{\\theta}_k - \\theta_k^*)$")) +
     geom_hline(yintercept = 0, color = "grey30") +
     scale_fill_brewer(palette = "Set1")
   if(student_nu){
-    plot1 <- plot1 + labs(y = TeX("$\\sqrt{n}/d \\ \\sum \\hat{\\nu}_k - \\nu_k^*$"))
-    plot2 <- plot2 + labs(y = TeX("$\\sqrt{n}/d \\ \\sum \\hat{\\nu}_k - \\nu_k^*$"))
+    plot1 <- plot1 + labs(y = TeX("$\\sqrt{n}/d \\ \\sum (\\hat{\\nu}_k - \\nu_k^*)$"))
+    plot2 <- plot2 + labs(y = TeX("$\\sqrt{n}/d \\ \\sum (\\hat{\\nu}_k - \\nu_k^*)$"))
   }
   grid.arrange(plot1, plot2, top = textGrob(title, gp = gpar(fontsize=20,font=1)))
 }
@@ -181,20 +181,20 @@ plot_sum_error_margins <- function(res_df, title, outlier.size = 0.5,
   plot1 <- ggplot(data = res_df %>% filter(dvine)) + geom_boxplot(aes(x = as.factor(d), y = sum_error*sqrt(n)/d, color = as.factor(n), fill = margins), 
                                                                   outlier.size = outlier.size, lwd = 0.7) + 
     facet_wrap(~par, scales = "free_y", labeller = label_parsed) + theme_bw() + 
-    labs(title = "D-Vine", fill = "estim. of \nmargins", col = "n", x = "d", y = TeX("$\\sqrt{n}/d\\ \\sum \\hat{\\theta}_k - \\theta_k^*$")) +
+    labs(title = "D-Vine", fill = "estim. of \nmargins", col = "n", x = "d", y = TeX("$\\sqrt{n}/d\\ \\sum (\\hat{\\theta}_k - \\theta_k^*)$")) +
     geom_hline(yintercept = 0, color = "grey30") +
     scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "grey70"), labels = c("FALSE" = "no", "TRUE" = "yes")) + 
     scale_color_brewer(palette = "Set1")
   plot2  <- ggplot(data = res_df %>% filter(!dvine)) + geom_boxplot(aes(x = as.factor(d), y = sum_error*sqrt(n)/d, color = as.factor(n), fill = margins), 
                                                                     outlier.size = outlier.size, lwd = 0.7) + 
     facet_wrap(~par, scales = "free_y", labeller = label_parsed) + theme_bw() + 
-    labs(title = "C-Vine", fill = "estim. of \nmargins", col = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum \\hat{\\theta}_k - \\theta_k^*$")) +
+    labs(title = "C-Vine", fill = "estim. of \nmargins", col = "n", x = "d", y = TeX("$\\sqrt{n}/d \\ \\sum (\\hat{\\theta}_k - \\theta_k^*)$")) +
     geom_hline(yintercept = 0, color = "grey30") +
     scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "grey70"), labels = c("FALSE" = "no", "TRUE" = "yes")) + 
     scale_color_brewer(palette = "Set1")
   if(student_nu){
-    plot1 <- plot1 + labs(y = TeX("$\\frac{\\sqrt{n}}{d}\\sum \\hat{\\nu}_k - \\nu_k^*$"))
-    plot2 <- plot2 + labs(y = TeX("$\\frac{\\sqrt{n}}{d}\\sum \\hat{\\nu}_k - \\nu_k^*$"))
+    plot1 <- plot1 + labs(y = TeX("$\\frac{\\sqrt{n}}{d}\\sum (\\hat{\\nu}_k - \\nu_k^*)$"))
+    plot2 <- plot2 + labs(y = TeX("$\\frac{\\sqrt{n}}{d}\\sum (\\hat{\\nu}_k - \\nu_k^*)$"))
   }
   grid.arrange(plot1, plot2, top = textGrob(title, gp = gpar(fontsize=20,font=1)))
   

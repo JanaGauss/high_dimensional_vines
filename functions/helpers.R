@@ -493,6 +493,12 @@ log_c_deriv_G <- function(u1, u2, theta){
 h_G <- function(u1, u2, theta){
   pnorm((qnorm(u1) - theta*qnorm(u2))/sqrt(1 - theta^2))
 }
+
+# h function Gaussian with X = Phi^{-1}(U)
+h <- function(x1, x2, par){
+  (x1 - par*x2)/sqrt(1 - par^2)
+}
+
 score_deriv_G <- function(u1, u2, theta){
   (1 + theta^2)/(1-theta^2)^2 - (1 + 3*theta^2)/(1-theta^2)^3*(qnorm(u1)^2 + qnorm(u2)^2) + 2*(3*theta + theta^3)/(1-theta^2)^3*qnorm(u1)*qnorm(u2)
 }

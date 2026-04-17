@@ -37,6 +37,10 @@ ggsave("figures/par_estim_sum_student.pdf", p_student1,
        height = 15, width = 25, units = "cm")
 
 
+ggsave("figures/par_estim_sum_student2.pdf", p_student2,
+       height = 15, width = 25, units = "cm")
+
+
 #### interpolation to verify consistency ####
 
 dat_interpol_gaussian <- create_dat_interpol(gaussian_df)
@@ -55,6 +59,14 @@ plot_cons_student2 <- plot_consistency(dat_interpol_student_nu %>% filter(d != 1
 
 ggsave("figures/par_estim_cons_gauss_gumbel.pdf", grid.arrange(plot_cons_gauss, plot_cons_gumbel, ncol = 1),
        height = 23, width = 30, units = "cm")
+
+
+plot_cons_gauss_short <- plot_consistency(dat_interpol_gaussian %>% filter(par != "function (t)  0.5^t"), title = "Gaussian")
+plot_cons_gumbel_short <- plot_consistency(dat_interpol_gumbel %>% filter(par == "function (t)  0.5/sqrt(t + 1)"), 
+                                          title = "Gumbel")
+ggsave("figures/par_estim_cons_gauss_gumbel_short.pdf", grid.arrange(plot_cons_gauss_short, plot_cons_gumbel_short, nrow = 1, widths = c(1.7, 1)),
+       height = 12, width = 30, units = "cm")
+
 
 ggsave("figures/par_estim_cons_student.pdf", grid.arrange(plot_cons_student1, plot_cons_student2, ncol = 1),
        height = 23, width = 30, units = "cm")
@@ -119,6 +131,9 @@ p_student_margins1 <- plot_sum_error_margins(student_df %>% filter(d <= 50), tit
 p_student_margins2 <- plot_sum_error_margins(student_df %>% filter(d <= 50) %>% mutate(sum_error = sum_error2), 
                                              title = TeX("Student's t (degrees of freedom $\\nu$, $\\nu^* = 4$)"),
                                              student_nu = TRUE)
+
+ggsave("figures/par_estim_margins_gumbel_student.pdf", grid.arrange(p_gumbel_margins, p_student_margins1, ncol = 1),
+       height = 30, width = 25, units = "cm")
 
 plot_max_norm_error_margins(gaussian_df, title = "Gaussian")
 plot_max_norm_error_margins(gumbel_df, title = TeX("Gumbel"))

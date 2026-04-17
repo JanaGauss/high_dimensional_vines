@@ -11,19 +11,18 @@ res$par_alpha <- paste0(res$par, ", ", res$alpha_t)
 
 
 res <- res %>% filter(!(dvine & par_alpha == "function (t)  0.5/sqrt(t + 1), function (t)  1") &
-                        !(str_sub(name, -1) == "2") & !(alpha_t == "function (t)  t^3") & !(alpha_t == "function (t)  t^2"))
+                        !(str_sub(name, -1) == "2"))
 
 res$par_alpha <- factor(res$par_alpha, levels = unique(res$par_alpha))
 label_tex <- c("$\\theta_t = 0$", "$\\theta_t = 0.5^t$", "$\\theta_t =1/(t + 1)$", 
                "$\\theta_t = 0.5/\\sqrt{t + 1 }$", "$\\theta_t = 0.5/\\sqrt{t + 1 }, \\alpha(t) = t$")
 names(label_tex) <- unique(res$par_alpha)
 
-plot <- ggplot(data = res, aes(x = d, y = value, col = par_alpha)) + geom_line() + geom_point() +
+plot <- ggplot(data = res, aes(x = d, y = max_E_phi, col = par_alpha)) + geom_line() + geom_point() +
   facet_wrap(~dvine_label) + geom_hline(yintercept = 0) + theme_bw() + 
   scale_color_brewer(palette = "Set1" , name = "Parameter",  labels = function(l) latex2exp::TeX(label_tex[l])) +
-  labs(y = "Estimation A3")
-plot 
-ggsave("figures/estimation_A3.pdf", plot,
+  labs(y = "Approximation A3")
+ggsave("figures/approximation_A3.pdf", plot,
        height = 5, width = 15, units = "cm")
 
 
@@ -56,4 +55,13 @@ plot2
 grid.arrange(plot1, plot2)
 ggsave("figures/estimation_M_D.pdf", grid.arrange(plot1, plot2),
        height = 18, width = 18, units = "cm")
+
+
+plot_short <- ggplot(data = res_long %>% filter(dvine & grepl("harmonic_root", name)), 
+                     aes(x = d^2, y = value)) + geom_line() + geom_point() +
+  facet_wrap(par~label, scales = "free", nrow = 1, labeller = \(x) label_parsed(x, multi_line = FALSE), dir = "v") +
+  labs(title = "D-Vine", y = "Estimation", x = TeX("$d^2$")) + 
+  theme_bw()
+ggsave("figures/estimation_M_D_short.pdf", plot_short,
+       height = 5.5, width = 12, units = "cm")
 
