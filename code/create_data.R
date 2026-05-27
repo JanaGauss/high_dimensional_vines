@@ -65,10 +65,13 @@ gumbel_df <- create_data(substr_files = "_1004_",
 
 student_df <- create_data(substr_files = "_2_",
                           par_order = par_order, par_2 = TRUE) %>% filter(n!= 10)
+mix_df <- create_data(substr_files = "_mix_",
+                      par_order = par_order, par_2 = TRUE)
 
 write_csv(gaussian_df, "results/gaussian_df.csv")
 write_csv(gumbel_df, "results/gumbel_df.csv")
 write_csv(student_df, "results/student_df.csv")
+write_csv(mix_df, "results/mix_df.csv")
 
 #### parameter estimation with margins ####
 gaussian_df_margins <- create_data(path = "results/estimate_params_margins/",
@@ -82,10 +85,13 @@ gumbel_df_margins <- create_data(path = "results/estimate_params_margins/",
 student_df_margins <- create_data(path = "results/estimate_params_margins/",
                                   substr_files = "_2_",
                                   par_order = par_order, par_2 = TRUE)
+mix_df <- create_data(substr_files = "_mix_",
+                      par_order = par_order, par_2 = TRUE)
 
 write_csv(gaussian_df_margins, "results/gaussian_df_margins.csv")
 write_csv(gumbel_df_margins, "results/gumbel_df_margins.csv")
 write_csv(student_df_margins, "results/student_df_margins.csv")
+write_csv(mix_df, "results/mix_df.csv")
 
 #### truncated C-Vine ####
 trunc_df <- create_data(path = "results/estimate_params_trunc/")

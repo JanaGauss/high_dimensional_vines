@@ -1,5 +1,5 @@
 
-remotes::install_github("vinecopulib/rvinecopulib@rotgumbel")
+remotes::install_github("vinecopulib/rvinecopulib@rotgumbel2")
 remotes::install_github("tnagler/VineCopula@gumbel-sq")
 
 library(ggplot2)
@@ -10,8 +10,8 @@ library(grid)
 library(gridExtra)
 library(cowplot)
 library(tidyverse)
-library(CVXR)
 library(TDA)
 library(nloptr)
 library(VineCopula)
 library(rvinecopulib)
+library(latex2exp)

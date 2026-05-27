@@ -1,31 +1,5 @@
 source("functions/helpers.R")
 
-vine_cop_par_matrix <- function(vc){
-  
-  params <- get_all_parameters(vc)
-  
-  d <- length(params) + 1
-  par_mat <- matrix(0, nrow =d, ncol = d)
-  for(i in 1:(d-1)){
-    par_mat[d - i + 1, 1:(d - i)] <- unlist(params[[i]])
-  }
-  
-  par_mat
-}
-
-vine_cop_par_matrix2 <- function(vc){
-  
-  params <- get_all_parameters(vc)
-  
-  d <- length(params) + 1
-  par_mat <- par_mat2 <- matrix(0, nrow =d, ncol = d)
-  for(i in 1:(d-1)){
-    par_mat[d - i + 1, 1:(d - i)] <- unlist(lapply(params[[i]], function(x) x[1,]))
-    par_mat2[d - i + 1, 1:(d - i)] <- unlist(lapply(params[[i]], function(x) x[2,]))
-  }
-  
-  list(par_mat, par_mat2)
-}
 
 fam_vec <- c("gaussian", "t", "clayton", "gumbel", "frank", "joe", "xtd_gumbel")
 names(fam_vec) <- as.character(c(1:6, 1004))
@@ -235,3 +209,74 @@ estimate_param <- function(d = 10, n = 100, N = 2, bicop_fam = 1, par = function
   }
 }
 
+# using a 0.5-0.5 mixture of two gumbels with rotation
+estimate_param_mixgumbel <- function(d = 10, n = 100, N = 2, par1 = function(t){0}, par2 = NULL, dvine = TRUE,
+                                    seed = 1234, name = "test", save = FALSE, return = TRUE, n_cores = 1,
+                                    path = "results/", folder = NA){
+  
+  par_vec1 <- par_vec2 <- c()
+  for(t in 1:(d-1)){
+    par_vec1 <- c(par_vec1, rep(par1(t), (d-t)))
+    if(!is.null(par2)){
+      par_vec2 <- c(par_vec2, rep(par2(t), (d-t)))
+    }
+  }
+  if(is.null(par2)){
+    par_vec2 <- -1*par_vec1
+  }
+  
+  theta_true <- par_vec1
+  theta_true2 <- par_vec2
+    
+  pair_copulas_flat <- mapply(function(p1, p2) {
+    bicop_dist(
+      "mixgumbel", parameters = c(p1, p2))
+  }, par_vec1, par_vec2, SIMPLIFY = FALSE)
+  
+  
+  pair_copulas <- list()
+  k <- 1
+  for (tree in 1:(d-1)) {
+    pair_copulas[[tree]] <- list()
+    for (edge in 1:(d - tree)) {
+      pair_copulas[[tree]][[edge]] <- pair_copulas_flat[[k]]
+      k <- k + 1
+    }
+  }
+  
+  if(dvine){
+    structure <- dvine_structure(1:d)
+  } else{
+    structure <- cvine_structure(1:d)
+  }
+  
+  vc <- vinecop_dist(pair_copulas, structure)
+  
+  # simulate data
+  set.seed(seed)
+  seed_list <- as.integer(sample(1:1e7, N, replace = FALSE))
+  res_list <- lapply(seed_list, function(s) sample_and_estim2(s, n, vc, n_cores, family = "mixgumbel"))
+  
+  theta_hat_matrix <- sapply(1:N, function(i) res_list[[i]][1]) %>% do.call(rbind, .)
+  theta_hat_matrix2 <- sapply(1:N, function(i) res_list[[i]][2]) %>% do.call(rbind, .)
+  
+  df <- data.frame(d = d, p = d*(d-1)/2, n = n, N = N, par = deparse1(par1), par2 = deparse(par2),
+                   bicop_fam = "mixgumbel", dvine = dvine, seed = seed, name = name)
+  
+  result <- list(theta_hat_matrix = theta_hat_matrix, theta_hat_matrix2 = theta_hat_matrix2,
+                 theta_true = theta_true, theta_true2 = theta_true2, df = df)
+  
+  if(save){
+    if(is.na(folder)){
+      saveRDS(result, paste0(path, "estimate_params/", name, ".rds"))
+    } else{
+      saveRDS(result, paste0(path, folder, name, ".rds"))
+    }
+    
+    
+  }
+  
+  if(return){
+    result
+  }
+}

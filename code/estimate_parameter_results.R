@@ -8,6 +8,7 @@ source("functions/plot_functions.R")
 gaussian_df <- read_csv("results/gaussian_df.csv") 
 gumbel_df <- read_csv("results/gumbel_df.csv") 
 student_df <- read_csv("results/student_df.csv") 
+mix_df <- read_csv("results/mix_df.csv") 
 
 # maximum norm of error, Gauss and Gumbel
 p_gauss_norm <- plot_max_norm_error(gaussian_df, title = "Gaussian")
@@ -17,6 +18,21 @@ p_gumbel_norm <- plot_max_norm_error(gumbel_df, title = TeX("Gumbel"))
 plot_max_norm_error(student_df, title = TeX("Student's t ($\\rho$)"))
 plot_max_norm_error(student_df %>% mutate(max_norm_error = max_norm_error2), 
                     title = TeX("Student's t (degrees of freedom $\\nu$, $\\nu^* = 4$)"))
+# Gumbel mixture 
+plot_max_norm_error(mix_df, title = TeX("Gumbel mixture, 1st parameter"),
+                    n_vec = c(1000, 2500, 5000), d_vec = c(10, 25, 50, 100, 150))
+plot_max_norm_error(mix_df %>% mutate(max_norm_error = max_norm_error2), 
+                    title = TeX("Gumbel mixture, 2nd parameter"),
+                    n_vec = c(1000, 2500, 5000), d_vec = c(10, 25, 50, 100, 150),
+                    par_levels_tex = TeX(c("$\\theta_t = -0.5/\\sqrt{t + 1}$", 
+                                           "$\\theta_t = -1/(t + 1)$" , 
+                                           "$\\theta_t = -0.5^t$" )))
+
+# sqrt(n)-consistency for fix d:
+# example: gumbel mixture, D-vine, 1/(t+1)
+ggplot(dat = mix_df %>% filter(dvine & par == "function (t)  1/(t + 1)")) + 
+  geom_boxplot(aes(x = as.factor(n), y = max_norm_error*sqrt(n), fill = as.factor(n))) +
+  facet_wrap(~d)
 
 # sum of error, Gauss and Gumbel
 p_gauss <- plot_sum_error(gaussian_df, title = "Gaussian")
@@ -33,12 +49,50 @@ p_student2 <- plot_sum_error(student_df %>% mutate(sum_error = sum_error2),
                              title = TeX("Student's t (degrees of freedom $\\nu$, $\\nu^* = 4$)"),
                              student_nu = TRUE) 
 
+
 ggsave("figures/par_estim_sum_student.pdf", p_student1,
        height = 15, width = 25, units = "cm")
 
 
 ggsave("figures/par_estim_sum_student2.pdf", p_student2,
        height = 15, width = 25, units = "cm")
+
+
+## gumbel mixture
+p_mix1 <- plot_sum_error(mix_df, title = TeX("Gumbel mixture, 1st parameter"), d_vec = c(10, 25, 50, 100, 150),
+                         n_vec = c(1000, 2500, 5000))
+p_mix2 <- plot_sum_error(mix_df %>% mutate(sum_error = sum_error2), 
+                             title = TeX("Gumbel mixture, 2nd parameter"), d_vec = c(10, 25, 50, 100, 150),
+                         n_vec = c(1000, 2500, 5000),
+                         par_levels_tex = TeX(c("$\\theta_t = -0.5/\\sqrt{t + 1}$", 
+                                                "$\\theta_t = -1/(t + 1)$" , 
+                                                "$\\theta_t = -0.5^t$" ))) 
+
+
+ggsave("figures/par_estim_sum_mix.pdf", grid.arrange(p_mix1, p_mix2, ncol = 1),
+       height = 30, width = 25, units = "cm")
+
+plot_last_param_error(mix_df, title = TeX("Gumbel mixture, 1st parameter"), 
+                      d_vec = c(10, 25, 50, 100, 150),
+                      n_vec = c(1000, 2500, 5000))
+plot_last_param_error(mix_df %>% mutate(last_param_error = last_param_error2), 
+                      title = TeX("Gumbel, 2nd parameter"), 
+                      d_vec = c(10, 25, 50, 100, 150),
+                      n_vec = c(1000, 2500, 5000),
+                      par_levels_tex = TeX(c("$\\theta_t = -0.5/\\sqrt{t + 1}$", 
+                                             "$\\theta_t = -1/(t + 1)$" , 
+                                             "$\\theta_t = -0.5^t$" ))) 
+
+plot_last_param_error_norm(mix_df, title = TeX("Gumbel mixture, 1st parameter"), 
+                      d_vec = c(10, 25, 50, 100, 150),
+                      n_vec = c(1000, 2500, 5000))
+plot_last_param_error_norm(mix_df %>% mutate(last_param_error = last_param_error2), 
+                      title = TeX("Gumbel mixture, 2nd parameter"), 
+                      d_vec = c(10, 25, 50, 100, 150),
+                      n_vec = c(1000, 2500, 5000),
+                      par_levels_tex = TeX(c("$\\theta_t = -0.5/\\sqrt{t + 1}$", 
+                                             "$\\theta_t = -1/(t + 1)$" , 
+                                             "$\\theta_t = -0.5^t$" ))) 
 
 
 #### interpolation to verify consistency ####
@@ -48,6 +102,10 @@ dat_interpol_gumbel <- create_dat_interpol(gumbel_df)
 dat_interpol_student <- create_dat_interpol(student_df)
 dat_interpol_student_nu <- create_dat_interpol(student_df %>% 
                                                  mutate(max_norm_error = max_norm_error2))
+dat_interpol_mix <- create_dat_interpol(mix_df)
+dat_interpol_mix2 <- create_dat_interpol(mix_df %>% 
+                                                 mutate(max_norm_error = max_norm_error2))
+
 
 
 plot_cons_gauss <- plot_consistency(dat_interpol_gaussian, title = "Gaussian")
@@ -70,6 +128,24 @@ ggsave("figures/par_estim_cons_gauss_gumbel_short.pdf", grid.arrange(plot_cons_g
 
 ggsave("figures/par_estim_cons_student.pdf", grid.arrange(plot_cons_student1, plot_cons_student2, ncol = 1),
        height = 23, width = 30, units = "cm")
+
+
+plot_cons_mix1 <- plot_consistency(dat_interpol_mix, title = "Gumbel mixture, 1st parameter")
+plot_cons_mix2 <- plot_consistency(dat_interpol_mix2, 
+                                       title = "Gumbel mixture, 2nd parameter",
+                                   par_levels_tex = TeX(c("$\\theta_t = -0.5/\\sqrt{t + 1}$", 
+                                                          "$\\theta_t = -1/(t + 1)$" , 
+                                                          "$\\theta_t = -0.5^t$" )))
+
+ggsave("figures/par_estim_cons_mix.pdf", grid.arrange(plot_cons_mix1, plot_cons_mix2, ncol = 1),
+       height = 28, width = 30, units = "cm")
+
+ggplot(data = dat_interpol_mix %>% filter(dvine), 
+       aes(d, y = error_n_new*sqrt(n_new/log(d)/sqrt(d)), col = factor(f_n))) + geom_line() + geom_point() +
+  facet_wrap(~par, ncol = 3, labeller = label_parsed) + theme_bw() + 
+  labs(title = "D-Vine", col =  "d vs n", x = "d") +
+  scale_color_brewer(palette = "Set1", 
+                     labels = unname(TeX(c("$n \\sim \\, d$", "$n \\sim \\, d^2$", "$n \\sim \\, d^3$"))))
 
 
 ### D-Vine with slower rate of convergence ####

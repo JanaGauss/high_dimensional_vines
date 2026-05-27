@@ -162,6 +162,34 @@ par_mat_to_vec <- function(par_mat){
   par_vec
 }
 
+#### extract estimated pair copula parameters as vectors ####
+vine_cop_par_matrix <- function(vc){
+  
+  params <- get_all_parameters(vc)
+  
+  d <- length(params) + 1
+  par_mat <- matrix(0, nrow =d, ncol = d)
+  for(i in 1:(d-1)){
+    par_mat[d - i + 1, 1:(d - i)] <- unlist(params[[i]])
+  }
+  
+  par_mat
+}
+
+vine_cop_par_matrix2 <- function(vc){
+  
+  params <- get_all_parameters(vc)
+  
+  d <- length(params) + 1
+  par_mat <- par_mat2 <- matrix(0, nrow =d, ncol = d)
+  for(i in 1:(d-1)){
+    par_mat[d - i + 1, 1:(d - i)] <- unlist(lapply(params[[i]], function(x) x[1,]))
+    par_mat2[d - i + 1, 1:(d - i)] <- unlist(lapply(params[[i]], function(x) x[2,]))
+  }
+  
+  list(par_mat, par_mat2)
+}
+
 
 #### compute necessary conditional u values ####
 get_cond_u <- function(u, h, par_eval, CondDistr, M, MaxMat){
